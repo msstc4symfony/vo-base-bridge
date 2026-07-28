@@ -1,0 +1,33 @@
+/vendor/
+/composer.lock
+/coverage/
+/junit.xml
+/var/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+/.phpunit.cache/
+###< phpunit/phpunit ###
+
+###> phpstan/phpstan ###
+/phpstan.neon
+/build/
+###< phpstan/phpstan ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> rector/rector ###
+/.rector.cache
+###< rector/rector ###
+
+###> deptrac/deptrac ###
+/.deptrac.cache
+###< deptrac/deptrac ###
+
+# Claude Code local/temp files
+/.claude/settings.local.json
+/.claude/**/*.tmp.*

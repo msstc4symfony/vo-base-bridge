@@ -1,0 +1,71 @@
+{
+    "name": "msstc4php/vo-base-symfony-bridge",
+    "description": "Doctrine ORM/ODM types, Symfony Validator constraints and a Symfony bundle for msstc4php/value-objects.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["value-object", "doctrine", "dbal", "mongodb-odm", "symfony", "validator", "bundle", "bridge"],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../vo-base",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "require": {
+        "php": ">=8.4",
+        "msstc4php/value-objects": "dev-feat/value-objects-library as 1.1.0"
+    },
+    "require-dev": {
+        "brick/money": "^0.10",
+        "deptrac/deptrac": "^3.0",
+        "doctrine/dbal": "^4.4",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/mongodb-odm": "^2.9",
+        "doctrine/orm": "^3.3",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^11.5 || ^12.0",
+        "rector/rector": "^2.0",
+        "roave/security-advisories": "dev-latest",
+        "spaze/phpstan-disallowed-calls": "^4.0",
+        "symfony/config": "^7.2",
+        "symfony/dependency-injection": "^7.2",
+        "symfony/framework-bundle": "^7.2",
+        "symfony/http-kernel": "^7.2",
+        "symfony/validator": "^7.2"
+    },
+    "suggest": {
+        "doctrine/dbal": "To persist scalar value objects as Doctrine ORM column types.",
+        "doctrine/orm": "To map value objects with the bundled DBAL types.",
+        "doctrine/mongodb-odm": "To persist value objects with Doctrine MongoDB ODM.",
+        "symfony/validator": "To validate raw input against value object rules via constraints.",
+        "symfony/http-kernel": "To auto-register types and constraints through ValueObjectBridgeBundle.",
+        "brick/money": "Required by BrickMoneyType to persist Brick\\Money\\Money."
+    },
+    "autoload": {
+        "psr-4": {
+            "MSSTC4PHP\\ValueObjectBridge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MSSTC4PHP\\ValueObjectBridge\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "php-http/discovery": false
+        }
+    }
+}
