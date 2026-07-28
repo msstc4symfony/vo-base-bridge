@@ -1,0 +1,9 @@
+# PHPStan config for CI. Same checks as the local gate, but tolerates baseline
+# entries that no longer match — the isolation legs install without Doctrine or
+# without Symfony, so class.notFound patterns differ per leg. Any NEW finding
+# still fails the build.
+includes:
+    - phpstan.dist.neon
+
+parameters:
+    reportUnmatchedIgnoredErrors: false
