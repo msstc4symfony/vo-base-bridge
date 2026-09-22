@@ -20,6 +20,13 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "type": "path",
+            "url": "../vo-base-doctrine-bridge",
+            "options": {
+                "symlink": true
+            }
         }
     ],
     "require": {
@@ -28,7 +35,11 @@
     },
     "require-dev": {
         "deptrac/deptrac": "^3.0",
+        "doctrine/dbal": "^4.4",
+        "doctrine/mongodb-odm": "^2.9",
+        "doctrine/orm": "^3.3",
         "friendsofphp/php-cs-fixer": "^3.64",
+        "msstc4php/vo-base-doctrine-bridge": "dev-main",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
