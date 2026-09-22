@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle;
 
+use Doctrine\DBAL\Types\Type;
 use LogicException;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar as OdmRegistrar;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar as OrmRegistrar;
@@ -20,6 +21,19 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 #[CoversClass(ValueObjectBridgeBundle::class)]
 final class ValueObjectBridgeBundleTest extends TestCase
 {
+    /**
+     * The positive paths need the Doctrine bridge and the Doctrine stack behind
+     * it. Skipping rather than failing keeps this suite meaningful in the CI job
+     * that removes both to prove the bundle works without them -- the negative
+     * paths still run there, which is exactly what that job is checking.
+     */
+    private function requireDoctrineBridge(): void
+    {
+        if (!\class_exists(OrmRegistrar::class) || !\class_exists(Type::class)) {
+            self::markTestSkipped('The Doctrine bridge package and its Doctrine stack are not installed.');
+        }
+    }
+
     public function testExtensionAliasIsDerivedFromTheBundleName(): void
     {
         $extension = new ValueObjectBridgeBundle()->getContainerExtension();
@@ -30,6 +44,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testOrmTypesArePrependedWhenBothPackageAndExtensionArePresent(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith(['doctrine']);
 
         new ValueObjectBridgeBundle()->prependExtension($this->configurator($container), $container);
@@ -40,6 +56,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testOdmTypesArePrependedIntoTheirOwnExtension(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith(['doctrine_mongodb']);
 
         new ValueObjectBridgeBundle()->prependExtension($this->configurator($container), $container);
@@ -53,6 +71,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
      */
     public function testBothExtensionsGetTheirOwnBranch(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith(['doctrine', 'doctrine_mongodb']);
 
         new ValueObjectBridgeBundle()->prependExtension($this->configurator($container), $container);
@@ -73,6 +93,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testNothingHappensWhenTheDoctrineExtensionIsAbsent(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith([]);
 
         new ValueObjectBridgeBundle()->prependExtension($this->configurator($container), $container);
@@ -96,6 +118,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testExplicitFalseSuppressesRegistration(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith(['doctrine']);
         $container->prependExtensionConfig('value_object_bridge', ['orm' => false]);
 
@@ -117,6 +141,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testExplicitTrueFailsLoudlyWhenTheExtensionIsMissing(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith([]);
         $container->prependExtensionConfig('value_object_bridge', ['orm' => true]);
 
@@ -128,6 +154,8 @@ final class ValueObjectBridgeBundleTest extends TestCase
 
     public function testPrependingTwiceDoesNotDuplicateTypes(): void
     {
+        $this->requireDoctrineBridge();
+
         $container = $this->containerWith(['doctrine']);
         $bundle = new ValueObjectBridgeBundle();
 

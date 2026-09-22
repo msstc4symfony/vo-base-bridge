@@ -50,7 +50,7 @@ final class OrmKernelTest extends TestCase
         $kernel = new IntegrationKernel([new DoctrineBundle()], ['doctrine' => self::DBAL_CONFIG], 'orm-validator');
         $kernel->boot();
 
-        $validator = self::testContainer($kernel)->get(ValidatorInterface::class);
+        $validator = $this->testContainer($kernel)->get(ValidatorInterface::class);
         self::assertInstanceOf(ValidatorInterface::class, $validator);
 
         self::assertCount(0, $validator->validate('user@example.com', new AssertEmailAddress()));
@@ -59,7 +59,7 @@ final class OrmKernelTest extends TestCase
         $kernel->shutdown();
     }
 
-    private static function testContainer(IntegrationKernel $kernel): ContainerInterface
+    private function testContainer(IntegrationKernel $kernel): ContainerInterface
     {
         $container = $kernel->getContainer()->get('test.service_container');
         self::assertInstanceOf(ContainerInterface::class, $container);
@@ -69,7 +69,7 @@ final class OrmKernelTest extends TestCase
 
     private function connection(IntegrationKernel $kernel): Connection
     {
-        $connection = self::testContainer($kernel)->get('doctrine.dbal.default_connection');
+        $connection = $this->testContainer($kernel)->get('doctrine.dbal.default_connection');
         self::assertInstanceOf(Connection::class, $connection);
 
         return $connection;

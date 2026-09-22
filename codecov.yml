@@ -1,0 +1,22 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+        threshold: 1%
+
+comment:
+  layout: "reach, diff, files"
+  require_changes: true
+
+ignore:
+  - "tests/**"
+  - "vendor/**"
+  - "tools/**"
+  - "src/I18n/CountryCode.php"
+  - "src/I18n/CurrencyCode.php"
+  - "src/I18n/LanguageCode.php"

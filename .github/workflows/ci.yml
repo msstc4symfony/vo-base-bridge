@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  # Both siblings are consumed through path repositories, so their checkouts
+  # must sit next to this one, each on the branch its constraint names -- a
+  # path package's version is derived from the checked-out branch name.
+  CORE_REPO: https://github.com/msstc4php/vo-base.git
+  CORE_BRANCH: feat/value-objects-library
+  DOCTRINE_REPO: https://github.com/msstc4php/vo-base-doctrine-bridge.git
+  DOCTRINE_BRANCH: main
+
+jobs:
+  full:
+    name: Full toolchain
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: vo-base-symfony-bridge
+      - run: |
+          git clone --depth 1 --branch "$CORE_BRANCH" "$CORE_REPO" vo-base
+          git clone --depth 1 --branch "$DOCTRINE_BRANCH" "$DOCTRINE_REPO" vo-base-doctrine-bridge
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: intl, mongodb, mbstring, bcmath
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+        working-directory: vo-base-symfony-bridge
+      - run: make check
+        working-directory: vo-base-symfony-bridge
+      - run: make test
+        working-directory: vo-base-symfony-bridge
+
+  without-doctrine:
+    name: Bundle works with no Doctrine installed at all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: vo-base-symfony-bridge
+      - run: |
+          git clone --depth 1 --branch "$CORE_BRANCH" "$CORE_REPO" vo-base
+          git clone --depth 1 --branch "$DOCTRINE_BRANCH" "$DOCTRINE_REPO" vo-base-doctrine-bridge
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: intl, mbstring
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+        working-directory: vo-base-symfony-bridge
+      # The machine form of KTD3: the Doctrine bridge is suggested, never
+      # required, so everything here must still load and work without it.
+      - name: Remove the Doctrine bridge and the whole Doctrine stack
+        working-directory: vo-base-symfony-bridge
+        run: |
+          composer remove --dev --no-interaction --no-progress \
+            msstc4php/vo-base-doctrine-bridge \
+            doctrine/doctrine-bundle doctrine/mongodb-odm-bundle \
+            doctrine/orm doctrine/dbal doctrine/mongodb-odm
+      - name: Load every class and run the suites that do not need Doctrine
+        working-directory: vo-base-symfony-bridge
+        run: |
+          php tools/check-autoload-isolation.php "$PWD/src" 'MSSTC4PHP\ValueObjectSymfonyBridge\'
+          vendor/bin/phpunit --testsuite=Validator
+          vendor/bin/phpunit --testsuite=Bundle
