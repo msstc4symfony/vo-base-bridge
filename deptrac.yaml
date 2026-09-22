@@ -2,33 +2,18 @@ deptrac:
   paths:
     - ./src
   layers:
-    - name: DoctrineOrm
+    - name: Validator
       collectors:
         - type: directory
-          value: src/Doctrine/Orm/.*
-    - name: DoctrineOdm
+          value: src/Validator/.*
+    - name: Bundle
       collectors:
         - type: directory
-          value: src/Doctrine/Odm/.*
-    - name: SymfonyValidator
-      collectors:
-        - type: directory
-          value: src/Symfony/Validator/.*
-    - name: SymfonyBundle
-      collectors:
-        - type: directory
-          value: src/Symfony/Bundle/.*
+          value: src/Bundle/.*
   ruleset:
-    # No horizontal edges: a Doctrine type must never reach for a Symfony class
-    # and vice versa. This is what keeps the doctrine-only / symfony-only CI
-    # legs meaningful — either bridge must load with the other framework absent.
-    DoctrineOrm: ~
-    DoctrineOdm: ~
-    SymfonyValidator: ~
-    # The bundle is the single place allowed to see all three. It is itself
-    # unloadable without symfony/http-kernel, so it is only ever reached from a
-    # consumer's bundles.php.
-    SymfonyBundle:
-      - DoctrineOrm
-      - DoctrineOdm
-      - SymfonyValidator
+    # No Doctrine layer exists here at all -- that absence is the split. The
+    # bundle may reach the Doctrine package's registrars, but only behind a
+    # class_exists guard, and that package is not a declared layer.
+    Validator: ~
+    Bundle:
+      - Validator

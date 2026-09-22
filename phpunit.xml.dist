@@ -12,14 +12,14 @@
          failOnRisky="true"
          failOnWarning="true">
     <testsuites>
-        <testsuite name="Doctrine">
-            <directory>tests/Doctrine</directory>
-        </testsuite>
-        <testsuite name="Symfony">
-            <directory>tests/Symfony/Validator</directory>
+        <testsuite name="Validator">
+            <directory>tests/Validator</directory>
         </testsuite>
         <testsuite name="Bundle">
-            <directory>tests/Symfony/Bundle</directory>
+            <directory>tests/Bundle</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Bundle/Integration</directory>
         </testsuite>
     </testsuites>
 
