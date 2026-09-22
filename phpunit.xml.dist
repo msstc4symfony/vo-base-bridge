@@ -17,6 +17,8 @@
         </testsuite>
         <testsuite name="Bundle">
             <directory>tests/Bundle</directory>
+            <!-- Integration is its own suite; without this the files belong to both. -->
+            <exclude>tests/Bundle/Integration</exclude>
         </testsuite>
         <testsuite name="Integration">
             <directory>tests/Bundle/Integration</directory>
