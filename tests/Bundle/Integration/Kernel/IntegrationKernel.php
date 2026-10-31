@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle\Integration\Kernel;
+namespace Msstc4Symfony\VoBaseBridge\Test\Bundle\Integration\Kernel;
 
-use MSSTC4PHP\ValueObjectSymfonyBridge\Bundle\ValueObjectBridgeBundle;
+use Msstc4Symfony\VoBaseBridge\Bundle\ValueObjectBridgeBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

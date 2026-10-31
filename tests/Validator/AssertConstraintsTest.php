@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Validator;
+namespace Msstc4Symfony\VoBaseBridge\Test\Validator;
 
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertBic;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertCidr;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertCreditCardNumber;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertDecimal;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertDuration;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertEmailAddress;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertIban;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertIpv4;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertPhoneNumber;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertSlug;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertTimeOfDay;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertUrl;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertUuid;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertBic;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertCidr;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertCreditCardNumber;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertDecimal;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertDuration;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertEmailAddress;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertIban;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertIpv4;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertPhoneNumber;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertSlug;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertTimeOfDay;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertUrl;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertUuid;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

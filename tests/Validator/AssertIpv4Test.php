@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Validator;
+namespace Msstc4Symfony\VoBaseBridge\Test\Validator;
 
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertIpv4;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertIpv4;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;

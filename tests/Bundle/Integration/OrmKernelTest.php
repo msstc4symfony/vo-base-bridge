@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle\Integration;
+namespace Msstc4Symfony\VoBaseBridge\Test\Bundle\Integration;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\Type;
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\EmailAddressType;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle\Integration\Kernel\IntegrationKernel;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertEmailAddress;
+use Msstc4Symfony\VoBaseBridge\Test\Bundle\Integration\Kernel\IntegrationKernel;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertEmailAddress;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;

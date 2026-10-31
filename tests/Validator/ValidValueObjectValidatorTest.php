@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Validator;
+namespace Msstc4Symfony\VoBaseBridge\Test\Validator;
 
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\ValidValueObject;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\ValidValueObjectValidator;
+use Msstc4Symfony\VoBaseBridge\Validator\ValidValueObject;
+use Msstc4Symfony\VoBaseBridge\Validator\ValidValueObjectValidator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

@@ -45,3 +45,21 @@ Enabling the `orm` section pulls in the proxy factory, which then wants
 
 Three skip entries copied from the core are deprecated or never registered.
 Noise, not failures; kept so the repositories' configs stay line-comparable.
+
+## Relocated from `msstc4php` on 2026-10-31 UTC
+
+The package moved from `msstc4php/vo-base-symfony-bridge` to
+`../msstc4symfony/vo-base-bridge-symfony` and became `msstc4symfony/vo-base-bridge`,
+namespace `Msstc4Symfony\VoBaseBridge`. The name follows
+`dto-generator-bridge-symfony` (package `msstc4symfony/dto-generator-bridge`).
+
+Its path repositories point at `../../msstc4php/`, so that tree has to stay a
+sibling of `msstc4symfony/`, and `vendor/msstc4php/*` are relative symlinks: after
+another move, delete them and run `composer update msstc4php/vo-base
+msstc4php/vo-base-doctrine-bridge`.
+
+The move did **not** bring the package to `bundle-standard`:
+`php ../bundle-standard/bin/verify-standard.php .` still reports violations,
+among them the non-canonical `src/Bundle` and `src/Validator` layout and the
+missing standard `checks.yml`. The current `ci.yml` clones a core branch that is
+not on the remote yet, so it cannot pass until the core is pushed.

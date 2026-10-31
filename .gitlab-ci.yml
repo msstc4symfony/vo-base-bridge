@@ -7,8 +7,8 @@ variables:
 default:
   image: php:8.4-cli
   before_script:
-    - git clone --depth 1 --branch "$CORE_BRANCH" "$CORE_REPO" ../vo-base
-    - git clone --depth 1 --branch "$DOCTRINE_BRANCH" "$DOCTRINE_REPO" ../vo-base-doctrine-bridge
+    - git clone --depth 1 --branch "$CORE_BRANCH" "$CORE_REPO" ../../msstc4php/vo-base
+    - git clone --depth 1 --branch "$DOCTRINE_BRANCH" "$DOCTRINE_REPO" ../../msstc4php/vo-base-doctrine-bridge
 
 stages:
   - check
@@ -27,6 +27,6 @@ without-doctrine:
   script:
     - composer install --no-interaction --no-progress
     - composer remove --dev --no-interaction --no-progress msstc4php/vo-base-doctrine-bridge doctrine/doctrine-bundle doctrine/mongodb-odm-bundle doctrine/orm doctrine/dbal doctrine/mongodb-odm
-    - php tools/check-autoload-isolation.php "$PWD/src" 'MSSTC4PHP\ValueObjectSymfonyBridge\'
+    - php tools/check-autoload-isolation.php "$PWD/src" 'Msstc4Symfony\VoBaseBridge\'
     - vendor/bin/phpunit --testsuite=Validator
     - vendor/bin/phpunit --testsuite=Bundle

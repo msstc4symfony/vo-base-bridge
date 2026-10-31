@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle\Integration;
+namespace Msstc4Symfony\VoBaseBridge\Test\Bundle\Integration;
 
 use Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle;
 use Doctrine\ODM\MongoDB\Types\Type;
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\EmailAddressType;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle\Integration\Kernel\IntegrationKernel;
+use Msstc4Symfony\VoBaseBridge\Test\Bundle\Integration\Kernel\IntegrationKernel;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
 

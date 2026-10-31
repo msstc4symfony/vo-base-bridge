@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Validator;
+namespace Msstc4Symfony\VoBaseBridge\Validator;
 
 use Attribute;
 use MSSTC4PHP\ValueObject\Temporal\Duration;

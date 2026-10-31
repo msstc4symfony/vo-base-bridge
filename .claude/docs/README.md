@@ -1,6 +1,6 @@
 # Internal knowledge base
 
-Engineer notes for `msstc4php/vo-base-symfony-bridge`.
+Engineer notes for `msstc4symfony/vo-base-bridge`.
 
 | File | What it answers |
 |---|---|
@@ -10,4 +10,4 @@ Engineer notes for `msstc4php/vo-base-symfony-bridge`.
 | [known-issues.md](known-issues.md) | The lazy `extensionAlias`, DBAL registering on connection rather than boot, nested test suites |
 
 Related: the core's `.claude/docs/`, and
-`../vo-base-doctrine-bridge/.claude/docs/` for the types themselves.
+`../../msstc4php/vo-base-doctrine-bridge/.claude/docs/` for the types themselves.

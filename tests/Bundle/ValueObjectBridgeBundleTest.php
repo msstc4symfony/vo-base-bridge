@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectSymfonyBridge\Tests\Bundle;
+namespace Msstc4Symfony\VoBaseBridge\Test\Bundle;
 
 use Doctrine\DBAL\Types\Type;
 use LogicException;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar as OdmRegistrar;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar as OrmRegistrar;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Bundle\ValueObjectBridgeBundle;
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\ValidValueObjectValidator;
+use Msstc4Symfony\VoBaseBridge\Bundle\ValueObjectBridgeBundle;
+use Msstc4Symfony\VoBaseBridge\Validator\ValidValueObjectValidator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;

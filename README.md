@@ -1,7 +1,7 @@
-# msstc4php/vo-base-symfony-bridge
+# msstc4symfony/vo-base-bridge
 
 Symfony Validator constraints and a bundle for
-[`msstc4php/value-objects`][core].
+[`msstc4php/vo-base`][core].
 
 One line in `bundles.php` registers the constraint validator and — if
 [`msstc4php/vo-base-doctrine-bridge`][doctrine] happens to be installed — the
@@ -14,10 +14,10 @@ Neither package is on Packagist yet. Check them out side by side:
 ```json
 {
     "repositories": [
-        { "type": "path", "url": "../vo-base", "options": { "symlink": true } }
+        { "type": "path", "url": "../../msstc4php/vo-base", "options": { "symlink": true } }
     ],
     "require": {
-        "msstc4php/vo-base-symfony-bridge": "dev-main"
+        "msstc4symfony/vo-base-bridge": "dev-main"
     }
 }
 ```
@@ -30,7 +30,7 @@ want the field types; the bundle picks it up on its own.
 ```php
 // config/bundles.php
 return [
-    MSSTC4PHP\ValueObjectSymfonyBridge\Bundle\ValueObjectBridgeBundle::class => ['all' => true],
+    Msstc4Symfony\VoBaseBridge\Bundle\ValueObjectBridgeBundle::class => ['all' => true],
 ];
 ```
 
@@ -53,7 +53,7 @@ silent absence — useful when a deployment must not start without the types.
 ## Validating raw input
 
 ```php
-use MSSTC4PHP\ValueObjectSymfonyBridge\Validator\AssertEmailAddress;
+use Msstc4Symfony\VoBaseBridge\Validator\AssertEmailAddress;
 
 #[AssertEmailAddress]
 public string $email = '';
@@ -76,5 +76,5 @@ The Doctrine stack sits in `require-dev` purely for the bundle and integration
 tests. A CI job removes all of it and still expects everything to load — that is
 what keeps "suggest, not require" honest.
 
-[core]: ../vo-base
-[doctrine]: ../vo-base-doctrine-bridge
+[core]: ../../msstc4php/vo-base
+[doctrine]: ../../msstc4php/vo-base-doctrine-bridge

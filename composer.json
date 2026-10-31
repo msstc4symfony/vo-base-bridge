@@ -1,6 +1,6 @@
 {
-    "name": "msstc4php/vo-base-symfony-bridge",
-    "description": "Symfony Validator constraints and a bundle for msstc4php/value-objects.",
+    "name": "msstc4symfony/vo-base-bridge",
+    "description": "Symfony Validator constraints and a bundle for msstc4php/vo-base.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -16,14 +16,14 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../vo-base",
+            "url": "../../msstc4php/vo-base",
             "options": {
                 "symlink": true
             }
         },
         {
             "type": "path",
-            "url": "../vo-base-doctrine-bridge",
+            "url": "../../msstc4php/vo-base-doctrine-bridge",
             "options": {
                 "symlink": true
             }
@@ -31,7 +31,7 @@
     ],
     "require": {
         "php": ">=8.4",
-        "msstc4php/value-objects": "dev-feat/value-objects-library as 1.1.0"
+        "msstc4php/vo-base": "dev-feat/value-objects-library as 1.1.0"
     },
     "require-dev": {
         "deptrac/deptrac": "^3.0",
@@ -64,12 +64,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MSSTC4PHP\\ValueObjectSymfonyBridge\\": "src/"
+            "Msstc4Symfony\\VoBaseBridge\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MSSTC4PHP\\ValueObjectSymfonyBridge\\Tests\\": "tests/"
+            "Msstc4Symfony\\VoBaseBridge\\Test\\": "tests/"
         }
     },
     "config": {
